@@ -1,0 +1,88 @@
+from random import randint
+level = 3
+run = False
+
+
+x = input("Enter your name:")
+print("Hello, "+ x)
+print("Welcome to your quiz of the day!")
+while level == 3:
+    y = input("Please select your difficulty level\n Normal (n)\n Difficult (d)\n" ).lower()
+    if y == "n" or y == "normal":
+        level = 0
+        print("Fantastic! Normal difficulty it is")
+    elif y == "d" or y == "difficult":
+        level = 1
+    else:
+        print("No difficulty selected")
+
+
+if level == 0:
+    from questions import normal_questions as questions
+    run = True
+else:
+    from questions import difficult_questions as questions
+    from questions import difficult_answers as answers
+    run = True
+
+class Quiz():
+    current_question = 0
+    
+    for key, value in questions.items():
+        if key == current_question:
+            for q, a in value.items():
+                print(q)
+                print(a[0])
+                print(a[1])
+
+    def answer(self, input):
+        self.input = input
+        if input == answers[Quiz.current_question]:
+            Quiz.current_question += 1
+            print("correct!")
+        else:
+            run = False
+            end = End()
+            print("Incorrect!")
+
+class End():
+    def __repr__(self) -> str:
+        return "That is the endof the quiz"
+    
+                
+class Player():
+    def __init__(self, name):
+        self.name = name
+        self.level = level
+
+
+
+points = 0
+
+
+player_one = Player(x)
+
+while run == True:
+    game = Quiz()
+    game.answer(input().lower())
+
+
+#giving an answer:
+
+#create a player
+
+
+
+#create the difficulty
+
+#import questions depending on difficulty
+
+#start question 1
+
+#add points (money) to talley to see how much they win
+
+#end game
+
+
+
+
